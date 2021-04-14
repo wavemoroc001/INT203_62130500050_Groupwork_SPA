@@ -3,3 +3,8 @@
 @tailwind components;
 
 @tailwind utilities;
+
+.nb  {
+    @apply text-xl  place-items-center
+    font-medium gap-x-2 mt-3
+}
