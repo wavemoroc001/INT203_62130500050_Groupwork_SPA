@@ -1,19 +1,80 @@
 {
-  "posts": [
+  "airports": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "name": "Suvarnabhumi Intl",
+      "city": "Bangkok",
+      "country": "Thailand",
+      "iata_code": "BKK",
+      "_geoloc": {
+        "lat": 13.681108,
+        "lng": 100.747283
+      },
+      "links_count": 656,
+      "objectID": "3885"
+    },
+    {
+      "name": "Heathrow",
+      "city": "London",
+      "country": "United Kingdom",
+      "iata_code": "LHR",
+      "_geoloc": {
+        "lat": 51.4775,
+        "lng": -0.461389
+      },
+      "links_count": 1051,
+      "objectID": "507"
+    },
+    {
+      "name": "San Francisco Intl",
+      "city": "San Francisco",
+      "country": "United States",
+      "iata_code": "SFO",
+      "_geoloc": {
+        "lat": 37.618972,
+        "lng": -122.374889
+      },
+      "links_count": 499,
+      "objectID": "3469"
+    },
+    {
+      "name": "Osaka Intl",
+      "city": "Osaka",
+      "country": "Japan",
+      "iata_code": "ITM",
+      "_geoloc": {
+        "lat": 34.785528,
+        "lng": 135.438222
+      },
+      "links_count": 84,
+      "objectID": "2334"
+    },
+    {
+      "name": "Changi Intl",
+      "city": "Singapore",
+      "country": "Singapore",
+      "iata_code": "SIN",
+      "_geoloc": {
+        "lat": 1.350189,
+        "lng": 103.994433
+      },
+      "links_count": 820,
+      "objectID": "3316"
     }
   ],
-  "comments": [
+  "fligths": [
+    { 
+      "fligthsID": "1",
+      "airline" : "EVA Air",
+      "origin":"BKK",
+      "dest":"LHR",
+      "departDate":""
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "fligthsID": "2",
+      "airline" : "Air Asia",
+      "origin":"BKK",
+      "dest":"SIN",
+      "departDate":""
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }

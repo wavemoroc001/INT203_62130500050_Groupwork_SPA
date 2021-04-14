@@ -1,12 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
-import Playlist from '../components/Playlist.vue'
+import BookingFlight from '../views/BookingFlight.vue'
 
 const routes = [
   {
-    path: '/',
-    name: 'playlist',
-    component: Playlist
+    path: '/booking-flight',
+    name: 'BookingFlight',
+    component: BookingFlight
   },
   {
     path: '/about',
