@@ -1,8 +1,14 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import BookingFlight from '../views/BookingFlight.vue'
+import Test from '../views/Test.vue'
 
 const routes = [
+  {
+    path:'/',
+    name : 'Test',
+    component:Test
+  },
   {
     path: '/booking-flight',
     name: 'BookingFlight',
