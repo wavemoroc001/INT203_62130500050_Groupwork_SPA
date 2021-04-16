@@ -9,14 +9,22 @@
         type="radio"
         class="mt-1.5"
         name="tickettype"
-        checked
+        value="oneway"
+        
+        v-model="flightsCriteria.ticketType"
       />
       <label for="oneway" class="text-white font-medium">One way</label>
-      <input id="return" type="radio" class="mt-1.5" name="tickettype" />
+      <input
+        id="return"
+        type="radio"
+        class="mt-1.5"
+        name="tickettype"
+        value="return"
+        checked
+        v-model="flightsCriteria.ticketType"
+      />
       <label for="return" class="text-white font-medium">Return</label>
     </div>
-
-    <!-- <input type="radio" />Return -->
 
     <div class="grid grid-cols-5 gap-1">
       <label for="form" class="form-text-s">From</label>
@@ -27,43 +35,53 @@
 
       <select
         id="from"
-        v-model="searchFlight.from"
+        v-model="flightsCriteria.from"
         class="border border-gray-200 rounded-l-sm"
       >
         <option
           v-for="(a, index) in airportList"
           :key="index"
           :value="a.iata_code"
-          :selected="isSelected"
+          :selected="a.iata_code == 'BKK'"
         >
           {{ a.iata_code }} - {{ a.country }}
         </option>
       </select>
 
-      <select id="to" class="border border-gray-200">
-        <option value="BKK">BKK - Thailand </option>
-        <option value="LHR" selected>LHR - United Kingdom</option>
-        <option value="SFO">SFO - United State</option>
+      <select id="to" class="border border-gray-200" v-model="flightsCriteria.to">
+        <option
+          v-for="(a, index) in airportList.filter(a => a.iata_code !== flightsCriteria.from)"
+          :key="index"
+          :value="a.iata_code"
+          :selected="a.iata_code == 'SFO'"
+
+        >
+          {{ a.iata_code }} - {{ a.country }}
+        </option>
       </select>
 
       <input
         type="Date"
         id="depart"
-        value="departDate"
         class="border border-gray-200"
+        v-model="flightsCriteria.departDate"
       />
 
       <input
         type="Date"
         id="return"
-        value="returnDate"
         class="border border-gray-200"
+        v-model="flightsCriteria.returnDate"
       />
 
-      <select id="cabinclass" class="border border-gray-200 rounded-r-sm">
-        <option value="BKK">Economy</option>
-        <option value="LHR">Bussiness Class</option>
-        <option value="SFO">First Class</option>
+      <select
+        id="cabinclass"
+        class="border border-gray-200 rounded-r-sm"
+        v-model="flightsCriteria.cabinClass"
+      >
+        <option selected value="Economy">Economy</option>
+        <option value="Bussiness">Bussiness Class</option>
+        <option value="FirstClass">First Class</option>
       </select>
     </div>
     <button class="bg-green-500 text-white p-2 rounded-md font-bold mt-3">
@@ -74,9 +92,9 @@
 
 <script>
 export default {
-  data() {
+    data() {
     return {
-      searchFlight: {
+      flightsCriteria: {
         ticketType: "",
         from: "",
         to: "",
@@ -85,24 +103,49 @@ export default {
         cabinClass: "",
       },
       airportList: [],
-      isSelected : true
+      errors : {
+        isTicketType : false,
+        isFrom : false,
+        isTo : false,
+        isDepartDate : false,
+        isReturnDate : false,
+        isCabinClass : false
+      }
     };
   },
   methods: {
     validateForm() {
       alert(`SearchInfo\n
-            ticketType: ${this.searchFlight.ticketType}\n
-            from: ${this.searchFlight.from}\n
-            to: ${this.searchFlight.to}\n
-            departDate: ${this.searchFlight.departDate}\n
-            returnDate: ${this.searchFlight.returnDate}\n
-            cabinClass: ${this.searchFlight.cabinClass}`);
+            ticketType: ${this.flightsCriteria.ticketType}\n
+            from: ${this.flightsCriteria.from}\n
+            to: ${this.flightsCriteria.to}\n
+            departDate: ${this.flightsCriteria.departDate}\n
+            returnDate: ${this.flightsCriteria.returnDate}\n
+            cabinClass: ${this.flightsCriteria.cabinClass}`);
+      this.flightsCriteria.ticketType ? '' : this.errors.isTicketType = true;
+      this.flightsCriteria.isFrom ? '' : this.errors.isFrom = true;
+      this.flightsCriteria.isTo ? '' : this.errors.isTo = true;
+      this.flightsCriteria.isDepartDate ? '' : this.errors.isDepartDate = true;
+      this.flightsCriteria.isReturnDate ? '' : this.errors.isReturnDate = true;
+      this.flightsCriteria.cabinClass ? '' : this.errors.isCabinClass =true;
+      this.$emit('search-flight',this.flightsCriteria);
     },
+    setDefaultValue() {
+      const currentDate = new Date();
+      const returnDate = new Date();
+      returnDate.setDate(currentDate.getDate()+3);
+      this.flightsCriteria.departDate = currentDate.toLocaleDateString('fr-ca');
+      //this.flightsCriteria.returnDate = "One Way Ticket"
+      this.flightsCriteria.returnDate = returnDate.toLocaleDateString('fr-ca');
+      this.flightsCriteria.ticketType = 'return';
+      this.flightsCriteria.cabinClass = 'Economy';
+    }
   },
   async created() {
     const res = await fetch("http://localhost:5000/airports");
     this.airportList = await res.json();
-    console.log(this.airportList);
+    this.setDefaultValue();
+
   },
 };
 </script>

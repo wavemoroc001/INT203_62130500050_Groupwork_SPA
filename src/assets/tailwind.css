@@ -6,7 +6,7 @@
 
 .nb  {
     @apply text-xl  place-items-center
-    font-medium gap-x-2 mt-3
+    font-medium gap-x-2 
 }
 .form-text-s {
     @apply text-sm font-medium text-white place-self-start
