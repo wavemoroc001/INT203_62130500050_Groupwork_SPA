@@ -36,14 +36,12 @@
       <select
         id="from"
         v-model="flightsCriteria.from"
-        class="border border-gray-200 rounded-l-sm"
-      >
+        class="border border-gray-200 rounded-l-sm">
         <option
-          v-for="(a, index) in airportList"
+          v-for="(a, index) in airportList.filter(a => a.iata_code !== flightsCriteria.to)"
           :key="index"
           :value="a.iata_code"
-          :selected="a.iata_code == 'BKK'"
-        >
+          :selected="a.iata_code === 'BKK'">
           {{ a.iata_code }} - {{ a.country }}
         </option>
       </select>
@@ -53,7 +51,7 @@
           v-for="(a, index) in airportList.filter(a => a.iata_code !== flightsCriteria.from)"
           :key="index"
           :value="a.iata_code"
-          :selected="a.iata_code == 'SFO'"
+          :selected="a.iata_code === 'SFO'"
 
         >
           {{ a.iata_code }} - {{ a.country }}

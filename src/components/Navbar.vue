@@ -1,5 +1,5 @@
 <template>
-  <nav class="w-full  bg-white shadow-md h-14 flex justify-evenly items-center">
+  <nav class="w-full  bg-white shadow-md h-16 flex justify-evenly items-center">
       <a href="/" class="flex ml-36 items-center">
         <img :src="require('../assets/icon/icon.svg')" class="h-12" />
         <span class="ml-3 nb">Flights Scanner</span>
