@@ -5,7 +5,7 @@
       <span>Depart : 02.00 AM</span>
       <span>Arrived : 09.45 AM</span>
       <span>Total Traveltime : 20 Hours 20 min</span>
-  </div>
+    </div>
   </div>
 </template>
 
@@ -19,6 +19,8 @@ export default {
       type: Array,
       require: true,
     },
-  },
+  },methods:{
+
+  }
 };
 </script>
