@@ -11,3 +11,6 @@
 .form-text-s {
     @apply text-sm font-medium text-white place-self-start
 }
+.text-display-flights-head {
+    @apply text-xl font-medium
+}

@@ -1,5 +1,7 @@
 <template>
-  <div class="min-w-full h-screen flex flex-col relative justify-center items-center">
+  <div
+    class="min-w-full h-screen flex flex-col relative justify-center items-center"
+  >
     <nav-bar />
     <img
       class="opacity-75 w-full h-full object-cover"
@@ -14,8 +16,10 @@
     />
     <!-- <search-flight class="absolute top-2/4 left-2/4 transform -translate-x-2/4 -translate-y-2/4" /> -->
   </div>
-  <div class="min-w-full h-screen flex flex-col relative justify-center items-center">
-    <display-flights class=" rounded-lg bg-blue-300 shadow-lg" :filterFlights="flights"/>
+  <div
+    class="min-w-full h-screen flex flex-col relative justify-center items-center"
+  >
+    <display-flights :filterFlights="flights" />
   </div>
 </template>
 <script>
@@ -24,7 +28,7 @@ import DisplayFlights from "../components/DisplayFlights.vue";
 export default {
   components: {
     SearchFlight,
-    DisplayFlights
+    DisplayFlights,
   },
   data() {
     return {
@@ -34,20 +38,25 @@ export default {
   methods: {
     async fetchflights() {
       const res = await fetch("http://localhost:5000/fligths");
-      const data = res.json();
+      const data = await res.json();
       return data;
     },
     async filterFlights(flightsCriteria) {
       this.flights = await this.fetchflights();
-      this.flights = this.flights.filter( function(flights){
-        if(flights.ticketType == flightsCriteria.ticketType &&
-           flights.from == flightsCriteria.from &&
-           flights.to == flightsCriteria.to &&
-           flights.departDate == flightsCriteria.departDate &&
-           flights.returnDate == flightsCriteria.returnDate &&
-           flights.cabinClass == flightsCriteria.cabinClass) return true;
+      console.log(this.flights);
+      this.flights = this.flights.filter(function(flight) {
+        if (
+          //  flight.ticketType == flightsCriteria.ticketType &&
+          flight.from == flightsCriteria.from &&
+          flight.to == flightsCriteria.to &&
+          flight.departDate == flightsCriteria.departDate &&
+          flight.cabinClass == flightsCriteria.cabinClass
+        )
+          return true;
         return false;
       });
+      console.log(this.flights);
+      console.log(flightsCriteria);
     },
   },
 };
