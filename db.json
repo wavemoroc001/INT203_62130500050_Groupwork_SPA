@@ -114,5 +114,96 @@
       "travelTime": "20 H 20 min",
       "cabinClass": "Economic"
     }
+  ],
+  "meals": [
+    {
+      "value": "AVML",
+      "name": "VEGETARIAN HINDU MEAL"
+    },
+    {
+      "value": "BLML",
+      "name": "BLAND MEAL"
+    },
+    {
+      "value": "CHML",
+      "name": "CHILD MEAL"
+    },
+    {
+      "value": "DBML",
+      "name": "DIABETIC MEAL"
+    },
+    {
+      "value": "FPML",
+      "name": "FRUIT PLATTER MEAL"
+    },
+    {
+      "value": "GFML",
+      "name": "GLUTEN INTOLERANT MEAL"
+    },
+    {
+      "value": "HNML",
+      "name": "HINDU (NON VEGETARIAN) MEAL SPECIFIC"
+    },
+    {
+      "value": "KSML",
+      "name": "KOSHER MEAL"
+    },
+    {
+      "value": "LCML",
+      "name": "LOW CALORIE MEAL"
+    },
+    {
+      "value": "LSML",
+      "name": "LOW SALT MEAL"
+    },
+    {
+      "value": "LSML",
+      "name": "LOW SALT MEAL"
+    },
+    {
+      "value": "MOML",
+      "name": "MOSLEM MEAL"
+    },
+    {
+      "value": "NLML",
+      "name": "LOW LACTOSE MEAL"
+    },
+    {
+      "value": "PRML",
+      "name": "REDUCED PURIN MEAL "
+    },
+    {
+      "value": "RVML",
+      "name": "VEGETARIAN RAW MEAL"
+    },
+    {
+      "value": "SFML",
+      "name": "SEA FOOD MEAL"
+    },
+    {
+      "value": "VGML",
+      "name": "VEGETARIAN VEGAN MEAL "
+    },
+    {
+      "value": "VLML",
+      "name": "VEGETARIAN LACTO-OVO MEAL"
+    }
+  ],
+  "myflight": [
+    {
+      "id": "1756",
+      "title": "Miss",
+      "fname": "Samanta",
+      "lname": "Robert",
+      "address": "38/1 Moo16 Talat Jinda samphan Nakhonpathom thailand",
+      "tel": "0917799692",
+      "dob": "2000-01-18",
+      "meal": "VLML",
+      "flight": [
+        {
+          "id": "1"
+        }
+      ]
+    }
   ]
 }

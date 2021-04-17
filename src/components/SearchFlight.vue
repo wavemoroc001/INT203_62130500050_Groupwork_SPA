@@ -124,7 +124,7 @@ export default {
       this.flightsCriteria.isFrom ? '' : this.errors.isFrom = true;
       this.flightsCriteria.isTo ? '' : this.errors.isTo = true;
       this.flightsCriteria.isDepartDate ? '' : this.errors.isDepartDate = true;
-      this.flightsCriteria.isReturnDate ? '' : this.errors.isReturnDate = true;
+      //this.flightsCriteria.isReturnDate ? '' : this.errors.isReturnDate = true;
       this.flightsCriteria.cabinClass ? '' : this.errors.isCabinClass =true;
       console.log(`emit Event searchFlight`)
       this.$emit('search-flight',this.flightsCriteria);
@@ -135,7 +135,7 @@ export default {
       returnDate.setDate(currentDate.getDate()+1);
       this.flightsCriteria.departDate = currentDate.toLocaleDateString('fr-ca');
       //this.flightsCriteria.returnDate = "One Way Ticket"
-      this.flightsCriteria.returnDate = returnDate.toLocaleDateString('fr-ca');
+      //this.flightsCriteria.returnDate = returnDate.toLocaleDateString('fr-ca');
       this.flightsCriteria.ticketType = 'return';
       this.flightsCriteria.cabinClass = 'Economic';
     }

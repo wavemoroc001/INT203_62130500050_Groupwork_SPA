@@ -2,7 +2,7 @@
   <div
     class="rounded-lg shadow-lg border w-8/12 p-4"
     v-for="flight in filterFlights"
-    :key="flight.flightID"
+    :key="flight.id"
   >
     <router-link
       :to="`/booking-info/${flight.id}`"
