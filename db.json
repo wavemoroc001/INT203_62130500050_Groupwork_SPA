@@ -10,7 +10,7 @@
         "lng": 100.747283
       },
       "links_count": 656,
-      "objectID": "3885"
+      "id": "3885"
     },
     {
       "name": "Heathrow",
@@ -22,7 +22,7 @@
         "lng": -0.461389
       },
       "links_count": 1051,
-      "objectID": "507"
+      "id": "507"
     },
     {
       "name": "San Francisco Intl",
@@ -34,7 +34,7 @@
         "lng": -122.374889
       },
       "links_count": 499,
-      "objectID": "3469"
+      "id": "3469"
     },
     {
       "name": "Osaka Intl",
@@ -46,7 +46,7 @@
         "lng": 135.438222
       },
       "links_count": 84,
-      "objectID": "2334"
+      "id": "2334"
     },
     {
       "name": "Changi Intl",
@@ -58,23 +58,61 @@
         "lng": 103.994433
       },
       "links_count": 820,
-      "objectID": "3316"
+      "id": "3316"
     }
   ],
   "fligths": [
-    { 
-      "fligthsID": "1",
-      "airline" : "EVA Air",
-      "origin":"BKK",
-      "dest":"LHR",
-      "departDate":""
+    {
+      "id": "1",
+      "logo": "Eva-air.png",
+      "airline": "EVA Air",
+      "from": "BKK",
+      "to": "LHR",
+      "departDate": "2021-04-17",
+      "departTime": "20:30",
+      "arrivedDate": "2021-04-18",
+      "arrivedTime": "04:45",
+      "travelTime": "20 H 20 min",
+      "cabinClass": "Business Class"
     },
     {
-      "fligthsID": "2",
-      "airline" : "Air Asia",
-      "origin":"BKK",
-      "dest":"SIN",
-      "departDate":""
+      "id": "2",
+      "logo": "american-airlines.jpeg",
+      "airline": "American Airlines",
+      "from": "BKK",
+      "to": "SFO",
+      "departDate": "2021-04-17",
+      "departTime": "20:30",
+      "arrivedDate": "2021-04-18",
+      "arrivedTime": "04:45",
+      "travelTime": "20 H 20 min",
+      "cabinClass": "First Class"
+    },
+    {
+      "id": "3",
+      "logo": "Emirates.png",
+      "airline": "Emirates",
+      "from": "BKK",
+      "to": "SFO",
+      "departDate": "2021-04-17",
+      "departTime": "20:30",
+      "arrivedDate": "2021-04-18",
+      "arrivedTime": "04:45",
+      "travelTime": "20 H 20 min",
+      "cabinClass": "Economic"
+    },
+    {
+      "id": "4",
+      "logo": "Singapore-Airlines-logo-vertical.png",
+      "airline": "Singapore Airlines",
+      "from": "BKK",
+      "to": "LHR",
+      "departDate": "2021-04-17",
+      "departTime": "20:30",
+      "arrivedDate": "2021-04-18",
+      "arrivedTime": "04:45",
+      "travelTime": "20 H 20 min",
+      "cabinClass": "Economic"
     }
   ]
 }

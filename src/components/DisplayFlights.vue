@@ -1,26 +1,71 @@
 <template>
-  <div class="grid grid-rows-3">
-    <img src="../assets/AirlineLogo/airasia.png" class="h-24" />
-    <div class="grid grid-col-3">
-      <span>Depart : 02.00 AM</span>
-      <span>Arrived : 09.45 AM</span>
-      <span>Total Traveltime : 20 Hours 20 min</span>
-    </div>
+  <div
+    class="rounded-lg shadow-lg border w-8/12 p-4"
+    v-for="flight in filterFlights"
+    :key="flight.flightID"
+  >
+    <router-link
+      :to="`/booking-info/${flight.id}`"
+      class="grid grid-rows-1 grid-cols-4"
+    >
+      <div class="grid grid-cols-6 place-items-center col-span-4  gap-x-5">
+        <div class="text-base grid">
+          <img
+            :src="require(`../assets/AirlineLogo/${flight.logo}`)"
+            class="h-16 place-self-center"
+          />
+          <h3 class="text-black">Flight ID</h3>
+          <span>{{ flight.id }}</span>
+        </div>
+        <div>
+          <h3 class="text-display-flights-head">From → To</h3>
+          <span class="">{{ flight.from }} - {{ flight.to }}</span>
+        </div>
+        <div>
+          <h3 class="text-display-flights-head">Depart</h3>
+          <span>{{ flight.departDate }} </span>
+          <span>{{ flight.departTime }}</span>
+        </div>
+        <div>
+          <h3 class="text-display-flights-head">Arrived</h3>
+          <span>{{ flight.arrivedDate }} </span>
+          <span> {{ flight.arrivedTime }}</span>
+        </div>
+        <div>
+          <span class="text-display-flights-head">Cabin Class</span>
+          <h3>{{ flight.cabinClass }}</h3>
+        </div>
+        <div>
+          <span class="text-display-flights-head">Total Traveltime</span>
+          <h3>{{ flight.travelTime }}</h3>
+        </div>
+      </div>
+    </router-link>
+  </div>
+  <div v-if="hasFilterFlights" class="text-3xl">
+    <h3>No Flight yet !</h3>
+    <h3>⊙︿⊙</h3>
   </div>
 </template>
 
 <script>
 export default {
   data() {
-    return {};
+    return {
+      hasFilterFlights: false,
+    };
   },
   props: {
     filterFlights: {
       type: Array,
       require: true,
     },
-  },methods:{
-
-  }
+  },
+  methods: {},
+  watch: {
+    filterFlights() {
+      this.hasFilterFlights = this.filterFlights.length === 0 ? true : false;
+    },
+  },
 };
 </script>

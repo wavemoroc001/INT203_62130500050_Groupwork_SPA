@@ -1,13 +1,13 @@
 <template>
   <div class="w-full h-screen">
-    <search-flight class="absolute top-8 "></search-flight>
+    <display-flights/>
   </div>
 </template>
 <script>
-import SearchFlight from "../components/SearchFlight.vue";
+import DisplayFlights from "../components/DisplayFlights.vue"
 export default {
   components: {
-    SearchFlight,
+    DisplayFlights
   },
 };
 </script>

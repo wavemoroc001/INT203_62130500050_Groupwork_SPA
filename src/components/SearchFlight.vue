@@ -77,9 +77,9 @@
         class="border border-gray-200 rounded-r-sm"
         v-model="flightsCriteria.cabinClass"
       >
-        <option selected value="Economy">Economy</option>
-        <option value="Bussiness">Bussiness Class</option>
-        <option value="FirstClass">First Class</option>
+        <option selected value="Economic">Economic</option>
+        <option value="Business Class">Business Class</option>
+        <option value="First Class">First Class</option>
       </select>
     </div>
     <button class="bg-green-500 text-white p-2 rounded-md font-bold mt-3">
@@ -113,30 +113,31 @@ export default {
   },
   methods: {
     validateForm() {
-      alert(`SearchInfo\n
-            ticketType: ${this.flightsCriteria.ticketType}\n
-            from: ${this.flightsCriteria.from}\n
-            to: ${this.flightsCriteria.to}\n
-            departDate: ${this.flightsCriteria.departDate}\n
-            returnDate: ${this.flightsCriteria.returnDate}\n
-            cabinClass: ${this.flightsCriteria.cabinClass}`);
+      // alert(`SearchInfo\n
+      //       ticketType: ${this.flightsCriteria.ticketType}\n
+      //       from: ${this.flightsCriteria.from}\n
+      //       to: ${this.flightsCriteria.to}\n
+      //       departDate: ${this.flightsCriteria.departDate}\n
+      //       returnDate: ${this.flightsCriteria.returnDate}\n
+      //       cabinClass: ${this.flightsCriteria.cabinClass}`);
       this.flightsCriteria.ticketType ? '' : this.errors.isTicketType = true;
       this.flightsCriteria.isFrom ? '' : this.errors.isFrom = true;
       this.flightsCriteria.isTo ? '' : this.errors.isTo = true;
       this.flightsCriteria.isDepartDate ? '' : this.errors.isDepartDate = true;
       this.flightsCriteria.isReturnDate ? '' : this.errors.isReturnDate = true;
       this.flightsCriteria.cabinClass ? '' : this.errors.isCabinClass =true;
+      console.log(`emit Event searchFlight`)
       this.$emit('search-flight',this.flightsCriteria);
     },
     setDefaultValue() {
       const currentDate = new Date();
       const returnDate = new Date();
-      returnDate.setDate(currentDate.getDate()+3);
+      returnDate.setDate(currentDate.getDate()+1);
       this.flightsCriteria.departDate = currentDate.toLocaleDateString('fr-ca');
       //this.flightsCriteria.returnDate = "One Way Ticket"
       this.flightsCriteria.returnDate = returnDate.toLocaleDateString('fr-ca');
       this.flightsCriteria.ticketType = 'return';
-      this.flightsCriteria.cabinClass = 'Economy';
+      this.flightsCriteria.cabinClass = 'Economic';
     }
   },
   async created() {
