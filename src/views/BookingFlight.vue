@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     async fetchflights() {
-      const res = await fetch("http://localhost:5000/fligths");
+      const res = await fetch("http://localhost:5000/flights");
       const data = await res.json();
       return data;
     },

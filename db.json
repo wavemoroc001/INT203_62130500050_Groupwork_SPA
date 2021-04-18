@@ -61,7 +61,7 @@
       "id": "3316"
     }
   ],
-  "fligths": [
+  "flights": [
     {
       "id": "1",
       "logo": "Eva-air.png",
@@ -157,10 +157,6 @@
       "name": "LOW SALT MEAL"
     },
     {
-      "value": "LSML",
-      "name": "LOW SALT MEAL"
-    },
-    {
       "value": "MOML",
       "name": "MOSLEM MEAL"
     },
@@ -192,14 +188,15 @@
   "myflight": [
     {
       "id": "1756",
+      "profilePic": "min.jpeg",
       "title": "Miss",
       "fname": "Samanta",
       "lname": "Robert",
-      "address": "38/1 Moo16 Talat Jinda samphan Nakhonpathom thailand",
+      "address": "38/1 Moo16 Talat Jinda samphan Nakhonpathom Thailand",
       "tel": "0917799692",
       "dob": "2000-01-18",
       "meal": "VLML",
-      "flight": [
+      "flights": [
         {
           "id": "1"
         }

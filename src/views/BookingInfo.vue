@@ -114,7 +114,7 @@
           Booking Now!
         </button>
         <button
-          class="ml-14 p-4 bg-green-600 text-white font-semibold
+          class="ml-14 p-4 bg-red-500 text-white font-semibold
         col-span-3 rounded-xl"
           @click="resetValue"
         >
@@ -132,6 +132,7 @@ export default {
       flightID: this.$route.params.flightID,
       chooseFlight: [],
       customer: {
+        id : "1756",
         title: "",
         fname: "",
         lname: "",
@@ -146,7 +147,8 @@ export default {
   },
   methods: {
     validateTicket() {
-        
+        this.customer.id = Math.floor((Math.random() +1) * 100000)
+        this.booking(this.customer)
     },
     resetValue() {
       this.customer.title = "";
@@ -158,12 +160,36 @@ export default {
       this.customer.meal = "";
       this.customer.flightId = "";
     },
+    async booking(customer) {
+      // const alreadyCustomer = await fetch(`http://localhost:5000/myflight/${customer.id}`)
+      // if(Object.keys(alreadyCustomer).length !== 0) {
+      //   await fetch(`http://localhost:5000/myflight/${alreadyCustomer.id}`)
+      // }
+      await fetch("http://localhost:5000/myflight", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: customer.id,
+          title: customer.title,
+          fname: customer.fname,
+          lname: customer.lname,
+          address: customer.address,
+          tel: customer.tel,
+          dob: customer.dob,
+          meal: customer.meal,
+          flights: customer.flight,
+        }),
+      });
+    },
   },
   async created() {
-    //const res = await fetch(`http://localhost:5000/fligths/${this.flightID}`)
-    const res = await fetch(`http://localhost:5000/fligths/2`);
+    const flight = await fetch(`http://localhost:5000/flights/${this.flightID}`)
+    //const res = await fetch(`http://localhost:5000/fligths/2`);
     const meal = await fetch(`http://localhost:5000/meals`);
-    this.chooseFlight = await res.json();
+    this.chooseFlight = await flight.json();
     this.meals = await meal.json();
   },
 };

@@ -5,9 +5,9 @@
         <span class="ml-3 nb">Flights Scanner</span>
       </a>
 
-      <a class="nb" href="/about"><span>About</span></a>
+      <!-- <a class="nb" href="/about"><span>About</span></a> -->
       <a class="nb" href="/booking-flight"><span>Booking flight</span></a>
-      <a class="nb mr-36" href="/booking-info"
+      <a class="nb mr-36" href="/my-flight"
         ><span>Your Booking Flight</span></a>
   </nav>
 </template>
