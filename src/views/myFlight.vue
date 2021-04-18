@@ -6,7 +6,7 @@
     >
       <div
         id="customerInfo"
-        class="col-span-1 grid gap-1 shadow-lg  border-black rounded-lg p-4 space-y-1"
+        class="col-span-1 grid gap-1 shadow-lg  border-black rounded-lg p-4 space-y-1 static"
       >
         <img
           :src="require(`../assets/profile/${customer.profilePic}`)"
@@ -40,6 +40,7 @@
           <span>{{ customer.meal }}</span>
         </div>
       </div>
+
       <div class="grid grid-cols-3 grid-rows-6 col-span-3">
         <h3
           class="col-span-3 row-span-1 text-2xl font-semibold place-self-center"
@@ -47,13 +48,14 @@
           Booked Flight
         </h3>
         <div
-          class="pl-10 pt-4 shadow-lg col-span-3 row-span-1 rounded border grid grid-cols-4 place-content-center "
+          class=" pt-4  col-span-3 row-span-1 rounded border grid grid-cols-5 place-content-center "
+          :class="{ 'shadow-lg': !displayDetail }"
           v-for="flight in bookedFlight"
           :key="flight.id"
         >
           <div class="col-span-1 bg-salmon place-self-center">
             <img
-              class="h-16 "
+              class="h-16 row-span-2 "
               :src="require(`../assets/AirlineLogo/${flight.logo}`)"
             />
           </div>
@@ -71,6 +73,39 @@
             <span>{{ flight.departDate }} | </span>
             <span>{{ flight.departTime }}</span>
           </div>
+          <div class="ml-16 place-self-center" @click="toggelDetail">
+            <img class="h-7" src="../assets/icon/dropdown.png" />
+          </div>
+
+          <div
+            v-if="displayDetail"
+            class=" rounded-lg col-span-5 grid grid-cols-4 place-content-center mt-3"
+          >
+            <div class="col-span-1">
+              <h3 class="font-medium text-xl">Total Time Travel</h3>
+              <span>{{ flight.travelTime }}</span>
+            </div>
+            <div class="">
+              <h3 class="font-medium text-xl">CabinClass :</h3>
+              <span>{{ flight.cabinClass }}</span>
+            </div>
+            <div>
+              <h3 class="font-medium text-xl">Price :</h3>
+              <span>{{ flight.price }}</span>
+            </div>
+            <div class="col-span-1">
+              <button
+                class="bg-red-500 font-bold text-xl text-white p-2 rounded-lg"
+                @click="cancelTrip(flight.id)"
+              >
+                Cancel Trip!
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="place-self-center" v-if="!bookedFlight">
+          <h3>No Flight yet !</h3>
+          <h3>⊙︿⊙</h3>
         </div>
       </div>
     </div>
@@ -84,29 +119,42 @@ export default {
       customer: [],
       flights: [],
       bookedFlight: [],
+      displayDetail: false,
     };
   },
   methods: {
-    filtersFlight(customer, flights) {
+    filtersFlight(BookedFlightId, flights) {
       let filted = [];
-      let flight, cf;
-      for (flight in flights) {
-        for (cf in customer.flights) {
-          if (customer.flights[cf].id === flights[flight].id)
-            //console.log(flights[flight]);
-            filted.push(flights[flight]);
+      let f, b;
+      for (f in flights) {
+        for (b in BookedFlightId) {
+          if (BookedFlightId[b].id === flights[f].id)
+            filted.push(flights[f]);
         }
       }
       return filted;
     },
+    toggelDetail() {
+      this.displayDetail = !this.displayDetail;
+      console.log(this.displayDetail);
+    },
+    async cancelTrip (flightId) {
+          const res = await fetch(`http://localhost:5000/myflight/${flightId}`,{
+            method: "DELETE"
+      })
+        res.status === 200 ?
+        this.bookedFlight = this.bookedFlight.filter(flight => flight.id !== flightId) : console.log(`Can not delete!`)
+    }
   },
   async created() {
-    const cust = await fetch(`http://localhost:5000/myflight/1756`);
-    const historyFlights = await fetch(`http://localhost:5000/flights`);
+    const cust = await fetch(`http://localhost:5000/customers/1756`);
+    const allFlights = await fetch(`http://localhost:5000/flights`);
+    const bookedFlightId = await fetch (`http://localhost:5000/myflight`)
+    
     this.customer = await cust.json();
-    this.flights = await historyFlights.json();
-    this.bookedFlight = await this.filtersFlight(this.customer, this.flights);
-    console.log(this.bookedFlight);
+    this.flights = await allFlights.json();
+    this.bookedFlight = this.filtersFlight(await bookedFlightId.json(), this.flights);
+    //console.log(this.bookedFlight);
   },
 };
 </script>

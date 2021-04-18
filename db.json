@@ -73,7 +73,8 @@
       "arrivedDate": "2021-04-18",
       "arrivedTime": "04:45",
       "travelTime": "20 H 20 min",
-      "cabinClass": "Business Class"
+      "cabinClass": "Business Class",
+      "price": "30000"
     },
     {
       "id": "2",
@@ -86,7 +87,8 @@
       "arrivedDate": "2021-04-18",
       "arrivedTime": "04:45",
       "travelTime": "20 H 20 min",
-      "cabinClass": "First Class"
+      "cabinClass": "First Class",
+      "price": "30000"
     },
     {
       "id": "3",
@@ -99,7 +101,8 @@
       "arrivedDate": "2021-04-18",
       "arrivedTime": "04:45",
       "travelTime": "20 H 20 min",
-      "cabinClass": "Economic"
+      "cabinClass": "Economic",
+      "price": "30000"
     },
     {
       "id": "4",
@@ -112,7 +115,8 @@
       "arrivedDate": "2021-04-18",
       "arrivedTime": "04:45",
       "travelTime": "20 H 20 min",
-      "cabinClass": "Economic"
+      "cabinClass": "Economic",
+      "price": "30000"
     }
   ],
   "meals": [
@@ -185,7 +189,8 @@
       "name": "VEGETARIAN LACTO-OVO MEAL"
     }
   ],
-  "myflight": [
+  "myflight": [{ "id": "1", "customer": "1756" }],
+  "customers": [
     {
       "id": "1756",
       "profilePic": "min.jpeg",
@@ -195,12 +200,7 @@
       "address": "38/1 Moo16 Talat Jinda samphan Nakhonpathom Thailand",
       "tel": "0917799692",
       "dob": "2000-01-18",
-      "meal": "VLML",
-      "flights": [
-        {
-          "id": "1"
-        }
-      ]
+      "meal": "VLML"
     }
   ]
 }
