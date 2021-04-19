@@ -4,15 +4,6 @@
     @submit.prevent="validateForm"
   >
     <div class="mb-3 flex space-x-2 justify-start">
-      <!-- <input
-        id="oneway"
-        type="radio"
-        class="mt-1.5"
-        name="tickettype"
-        value="oneway"
-        checked
-        v-model="flightsCriteria.ticketType"
-      /> -->
       <label for="oneway" class="text-white font-medium">One way</label>
     </div>
 
@@ -20,7 +11,6 @@
       <label for="form" class="form-text-s">From</label>
       <label for="to" class="form-text-s">To</label>
       <label for="depart" class="form-text-s">Depart</label>
-      <!-- <label for="return" class="form-text-s">Return</label> -->
       <label for="cabinclass" class="form-text-s">Cabin Class</label>
 
       <select

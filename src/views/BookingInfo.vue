@@ -1,15 +1,15 @@
 <template>
   <div class="min-w-full h-screen">
     <nav-bar />
-    <base-card
-      class=" flex mt-11 grid-rows-none place-content-center-center mx-36"
+    <div
+      class=" flex mt-11 grid-rows-none place-content-center gap-4 "
     >
       <base-card
         id="flightInfo"
         class="col-span-1 grid gap-1 shadow-lg  border-black rounded-lg p-4 space-y-2"
       >
         <!-- <img
-          :src="require(`../assets/AirlineLogo/${chooseFlight.logo}`)"
+           :src="require(`../assets/AirlineLogo/${chooseFlight.logo}`)"
           class="w-8/12 mt-3 place-self-center"
         /> -->
         <h3 class="text-xl font-medium">Flight Infomation</h3>
@@ -44,8 +44,8 @@
           <span>{{ chooseFlight.price }}</span>
         </div>
       </base-card>
-      <base-customer-form @customer-info="getCustomerInfo"/>
-    </base-card>
+      <base-customer-form class="" @customer-info="getCustomerInfo"/>
+    </div>
   </div>
 </template>
 
@@ -62,8 +62,11 @@ export default {
   methods: {
     getCustomerInfo(customer) {
       this.booking(customer,this.flightID);
+      this.$router.push
     },
-  
+    getImage(flight){
+      return String(`../assets/AirlineLogo/${flight.logo}`).toString()
+    },
     async booking(customer) {
       console.log(customer.meal)
       const custRes = await fetch("http://localhost:5000/customers", {

@@ -89,7 +89,8 @@
       </div>
     </div>
     <div class="flex justify-end pr-28">
-          <button
+      
+      <button
       class="ml-14 p-4 py-4 bg-green-600  text-white font-semibold rounded-xl"
       @click="validateTicket"
     >
@@ -130,6 +131,7 @@ export default {
   methods: {
     validateTicket() {
       this.$emit("customer-info", this.customer);
+      this.$router.push({path:'/my-flight'})
     },
     resetValue() {
       this.customer.title = "";
