@@ -2,16 +2,16 @@
   <div class="min-w-full h-screen">
     <nav-bar />
     <div
-      class=" flex mt-11 grid-rows-none place-content-center gap-4 "
+      class=" flex mt-11 grid-rows-none place-content-center gap-4 jus"
     >
       <base-card
         id="flightInfo"
         class="col-span-1 grid gap-1 shadow-lg  border-black rounded-lg p-4 space-y-2"
       >
-        <img
+        <!-- <img
            :src="require(`@/assets/AirlineLogo/${chooseFlight.logo}`)"
           class="w-8/12 mt-3 place-self-center"
-        /> 
+        />  -->
         <h3 class="text-xl font-medium">Flight Infomation</h3>
         <div class="">
           <span>Flight Id : </span>

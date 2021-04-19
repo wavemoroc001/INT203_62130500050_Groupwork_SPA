@@ -94,7 +94,7 @@
       class="ml-14 p-4 py-4 bg-green-600  text-white font-semibold rounded-xl"
       @click="validateTicket"
     >
-      Booking Now!
+      {{label}}
     </button>
     <button
       class="ml-14 p-4 bg-red-500 text-white font-semibold
@@ -112,7 +112,7 @@ export default {
   data() {
     return {
       customer: {
-        id: "1756",
+        id: "",
         title: "",
         fname: "",
         lname: "",
@@ -128,7 +128,7 @@ export default {
   methods: {
     validateTicket() {
       this.$emit("customer-info", this.customer);
-      this.$router.push({path:'/my-flight'})
+      this.resetValue();
     },
     resetValue() {
       this.customer.title = "";
@@ -142,25 +142,33 @@ export default {
     },
   },
   async created() {
-    if(this.method.toLowerCase() =='POST'.toLowerCase()){
     const meal = await fetch(`http://localhost:5000/meals`);
     this.meals = await meal.json();
-    }
+
     if(this.method.toLowerCase() == 'PUT'.toLowerCase()){
-      const customer = await fetch(`http://localhost:5000/customer/${this.customerIDProps}`)
+      const customer = await fetch(`http://localhost:5000/customers/${this.customerProps.id}`)
       this.customer =  await customer.json();
+      console.log(this.customer);
     } 
   },
   props : {
-    customerIDProps : {
-      type : Number
+    customerProps : {
+      type : Object
     },
     method : {
       type : String,
       require: true,
       default: 'POST'
+    },
+    label : {
+      type : String,
+      default : 'Booking Now !'
     }
-  },watch: {}
+  },computed: {
+      checkCustomerProps() {
+        return console.log(this.customerProps)
+      }
+  }
 
 };
 </script>

@@ -1,9 +1,7 @@
 <template>
   <div class="min-w-full h-screen">
     <nav-bar />
-    <div
-      class="grid grid-cols-4 mt-11 grid-rows-none place-content-center-center mx-36 gap-4"
-    >
+    <div class="flex mt-11 grid-rows-none justify-items-center justify-center mx-36 gap-4">
       <div
         id="customerInfo"
         class=" shadow-lg  border-black rounded-lg p-4 space-y-1 flex flex-col justify-items-center justify-center relative"
@@ -59,24 +57,30 @@
           <h3>⊙︿⊙</h3>
         </div>
       </div>
+      <div v-if="isEdit" class="absolute bg-white w-9/12 flex flex-col">
+        <button class="self-end" @click="closePopUp">
+          <img class="h-8 " :src="require('../assets/icon/close.png')" />
+        </button>
+        <base-customer-form
+          :customerProps="customer"
+          :method="`PUT`"
+          :label="`Save`"
+          @customer-info="putCustomer"
+          class="p-4"
+        />
+      </div>
     </div>
-    <base-card v-if="isEdit" class="absolute w-11/12 bg-black">
-      <base-customer-form
-        :customerIDProps="customer.id"
-        :method="PUT"
-        @customer-info="editCustomer"
-      />
-    </base-card>
   </div>
 </template>
 
 <script>
 import FlightDetail from "../components/FlightDetail.vue";
+import BaseCustomerForm from "../components/BaseCustomerForm.vue"
 export default {
-  components: { FlightDetail },
+  components: { FlightDetail,BaseCustomerForm },
   data() {
     return {
-      customer: [],
+      customer: '',
       flights: [],
       bookedFlight: [],
       isEdit: false,
@@ -93,6 +97,9 @@ export default {
       }
       return filted;
     },
+    closePopUp (){
+      this.isEdit = false;
+    },
     getImageProfile() {
       return require(`../assets/profile/min.jpeg`);
     },
@@ -106,8 +113,10 @@ export default {
           ))
         : console.log(`Can not delete!`);
     },
-    async editCustomer(customer) {
+    editCustomer() {
       this.isEdit = true;
+    },
+    async putCustomer(customer) {
       const editRes = await fetch(`http://localhost:5000/customers/1756`, {
         method: "PUT",
         headers: {
@@ -128,12 +137,14 @@ export default {
       editRes.status === 200
         ? console.log("Customer Edited")
         : console.log("Failed to edit!");
+        this.isEdit = false;
+        this.$router.push({path:'/myflight'})
     },
   },
   async created() {
     const cust = await fetch(`http://localhost:5000/customers/1756`);
     const allFlights = await fetch(`http://localhost:5000/flights`);
-    const bookedFlightId = await fetch(`http://localhost:5000/myflight`);
+    const bookedFlightId = await fetch(`http://localhost:5000/myflight?`);
 
     this.customer = await cust.json();
     this.flights = await allFlights.json();
