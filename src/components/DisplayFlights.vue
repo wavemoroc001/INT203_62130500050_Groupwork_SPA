@@ -1,7 +1,7 @@
 <template>
-  <div
-    class="rounded-lg shadow-lg border w-8/12 p-4"
-    v-for="flight in filterFlights"
+  <base-card
+    class=" border h-36 p-4"
+    v-for="flight in filtedFlights"
     :key="flight.id"
   >
     <router-link
@@ -41,8 +41,8 @@
         </div>
       </div>
     </router-link>
-  </div>
-  <div v-if="hasFilterFlights" class="text-3xl">
+  </base-card>
+  <div v-if="!filtedFlights.length" class="text-black text-2xl self-center">
     <h3>No Flight yet !</h3>
     <h3>⊙︿⊙</h3>
   </div>
@@ -50,21 +50,10 @@
 
 <script>
 export default {
-  data() {
-    return {
-      hasFilterFlights: false,
-    };
-  },
   props: {
-    filterFlights: {
+    filtedFlights: {
       type: Array,
       require: true,
-    },
-  },
-  methods: {},
-  watch: {
-    filterFlights() {
-      this.hasFilterFlights = this.filterFlights.length === 0 ? true : false;
     },
   },
 };

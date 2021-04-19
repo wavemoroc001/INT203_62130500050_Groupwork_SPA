@@ -13,6 +13,7 @@ module.exports = {
       '2xl': '1536px',
     },
     colors: {
+      coolblue : '#07084b',
       salmon : '#FA8072',
       transparent: 'transparent',
       current: 'currentColor',

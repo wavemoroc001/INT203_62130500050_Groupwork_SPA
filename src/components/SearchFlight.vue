@@ -1,58 +1,57 @@
 <template>
   <form
-    class="space-x-2  p-6 bg-blue-900 flex flex-col"
+    class="space-x-2  p-6 bg-coolblue flex flex-col"
     @submit.prevent="validateForm"
   >
     <div class="mb-3 flex space-x-2 justify-start">
-      <input
+      <!-- <input
         id="oneway"
         type="radio"
         class="mt-1.5"
         name="tickettype"
         value="oneway"
-        
-        v-model="flightsCriteria.ticketType"
-      />
-      <label for="oneway" class="text-white font-medium">One way</label>
-      <input
-        id="return"
-        type="radio"
-        class="mt-1.5"
-        name="tickettype"
-        value="return"
         checked
         v-model="flightsCriteria.ticketType"
-      />
-      <label for="return" class="text-white font-medium">Return</label>
+      /> -->
+      <label for="oneway" class="text-white font-medium">One way</label>
     </div>
 
-    <div class="grid grid-cols-5 gap-1">
+    <div class="grid grid-cols-4 gap-1">
       <label for="form" class="form-text-s">From</label>
       <label for="to" class="form-text-s">To</label>
       <label for="depart" class="form-text-s">Depart</label>
-      <label for="depart" class="form-text-s">Return</label>
+      <!-- <label for="return" class="form-text-s">Return</label> -->
       <label for="cabinclass" class="form-text-s">Cabin Class</label>
 
       <select
         id="from"
         v-model="flightsCriteria.from"
-        class="border border-gray-200 rounded-l-sm">
+        class="border border-gray-200 rounded-l-sm"
+      >
         <option
-          v-for="(a, index) in airportList.filter(a => a.iata_code !== flightsCriteria.to)"
+          v-for="(a, index) in airportList.filter(
+            (a) => a.iata_code !== flightsCriteria.to
+          )"
           :key="index"
           :value="a.iata_code"
-          :selected="a.iata_code === 'BKK'">
+          :selected="a.iata_code === 'BKK'"
+        >
           {{ a.iata_code }} - {{ a.country }}
         </option>
       </select>
 
-      <select id="to" class="border border-gray-200" v-model="flightsCriteria.to">
+      <select
+        id="to"
+        class="border border-gray-200"
+        v-model="flightsCriteria.to"
+      >
         <option
-          v-for="(a, index) in airportList.filter(a => a.iata_code !== flightsCriteria.from)"
+          v-for="(a, index) in airportList.filter(
+            (a) => a.iata_code !== flightsCriteria.from
+          )"
           :key="index"
           :value="a.iata_code"
           :selected="a.iata_code === 'SFO'"
-
         >
           {{ a.iata_code }} - {{ a.country }}
         </option>
@@ -63,13 +62,6 @@
         id="depart"
         class="border border-gray-200"
         v-model="flightsCriteria.departDate"
-      />
-
-      <input
-        type="Date"
-        id="return"
-        class="border border-gray-200"
-        v-model="flightsCriteria.returnDate"
       />
 
       <select
@@ -90,61 +82,52 @@
 
 <script>
 export default {
-    data() {
+  data() {
     return {
       flightsCriteria: {
-        ticketType: "",
         from: "",
         to: "",
         departDate: "",
-        returnDate: "",
         cabinClass: "",
       },
       airportList: [],
-      errors : {
-        isTicketType : false,
-        isFrom : false,
-        isTo : false,
-        isDepartDate : false,
-        isReturnDate : false,
-        isCabinClass : false
-      }
+      errors: {
+        isTicketType: false,
+        isFrom: false,
+        isTo: false,
+        isDepartDate: false,
+        isReturnDate: false,
+        isCabinClass: false,
+      },
+      isSearch: false,
     };
   },
+  emits: ["search-flight", "is-search"],
   methods: {
     validateForm() {
-      // alert(`SearchInfo\n
-      //       ticketType: ${this.flightsCriteria.ticketType}\n
-      //       from: ${this.flightsCriteria.from}\n
-      //       to: ${this.flightsCriteria.to}\n
-      //       departDate: ${this.flightsCriteria.departDate}\n
-      //       returnDate: ${this.flightsCriteria.returnDate}\n
-      //       cabinClass: ${this.flightsCriteria.cabinClass}`);
-      this.flightsCriteria.ticketType ? '' : this.errors.isTicketType = true;
-      this.flightsCriteria.isFrom ? '' : this.errors.isFrom = true;
-      this.flightsCriteria.isTo ? '' : this.errors.isTo = true;
-      this.flightsCriteria.isDepartDate ? '' : this.errors.isDepartDate = true;
-      //this.flightsCriteria.isReturnDate ? '' : this.errors.isReturnDate = true;
-      this.flightsCriteria.cabinClass ? '' : this.errors.isCabinClass =true;
-      console.log(`emit Event searchFlight`)
-      this.$emit('search-flight',this.flightsCriteria);
+      // this.flightsCriteria.isFrom ? '' : this.errors.isFrom = true;
+      // this.flightsCriteria.isTo ? '' : this.errors.isTo = true;
+      // this.flightsCriteria.isDepartDate ? '' : this.errors.isDepartDate = true;
+      // this.flightsCriteria.cabinClass ? '' : this.errors.isCabinClass =true;
+      this.$emit("is-search", (this.isSearch = true));
+      this.$emit("search-flight", this.flightsCriteria);
+      this.isSearch = false;
+      //this.setDefaultValue();
     },
     setDefaultValue() {
       const currentDate = new Date();
       const returnDate = new Date();
-      returnDate.setDate(currentDate.getDate()+1);
-      this.flightsCriteria.departDate = currentDate.toLocaleDateString('fr-ca');
-      //this.flightsCriteria.returnDate = "One Way Ticket"
-      //this.flightsCriteria.returnDate = returnDate.toLocaleDateString('fr-ca');
-      this.flightsCriteria.ticketType = 'return';
-      this.flightsCriteria.cabinClass = 'Economic';
-    }
+      returnDate.setDate(currentDate.getDate() + 1);
+      this.flightsCriteria.departDate = currentDate.toLocaleDateString("fr-ca");
+      this.flightsCriteria.cabinClass = "Economic";
+      this.flightsCriteria.from = "";
+      this.flightsCriteria.to = "";
+    },
   },
   async created() {
     const res = await fetch("http://localhost:5000/airports");
     this.airportList = await res.json();
     this.setDefaultValue();
-
   },
 };
 </script>

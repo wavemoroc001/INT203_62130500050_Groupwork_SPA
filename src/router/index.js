@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import BookingFlight from '../views/BookingFlight.vue'
 import BookingInfo from '../views/BookingInfo.vue'
 import myFlight from '../views/myFlight.vue'
+import welcome from '../views/welcome.vue'
 // import NotFoundPage from '../views/NotFound.vue'
 // import Test from '../views/Test.vue'
 
@@ -22,6 +23,11 @@ const routes = [
     name : 'myFlight',
     component : myFlight
   },
+  {
+    path : '/',
+    name : 'welcome',
+    component : welcome
+  }
   // {
   //   path : '*',
   //   name : 'NotFoundPage',

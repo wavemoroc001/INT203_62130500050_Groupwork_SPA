@@ -30,7 +30,7 @@
       "country": "United States",
       "iata_code": "SFO",
       "_geoloc": {
-        "lat": 37.618972,
+        "lat": 37.620972,
         "lng": -122.374889
       },
       "links_count": 499,
@@ -54,7 +54,7 @@
       "country": "Singapore",
       "iata_code": "SIN",
       "_geoloc": {
-        "lat": 1.350189,
+        "lat": 1.350209,
         "lng": 103.994433
       },
       "links_count": 820,
@@ -68,9 +68,9 @@
       "airline": "EVA Air",
       "from": "BKK",
       "to": "LHR",
-      "departDate": "2021-04-17",
+      "departDate": "2021-04-19",
       "departTime": "20:30",
-      "arrivedDate": "2021-04-18",
+      "arrivedDate": "2021-04-20",
       "arrivedTime": "04:45",
       "travelTime": "20 H 20 min",
       "cabinClass": "Business Class",
@@ -82,9 +82,9 @@
       "airline": "American Airlines",
       "from": "BKK",
       "to": "SFO",
-      "departDate": "2021-04-17",
+      "departDate": "2021-04-19",
       "departTime": "20:30",
-      "arrivedDate": "2021-04-18",
+      "arrivedDate": "2021-04-20",
       "arrivedTime": "04:45",
       "travelTime": "20 H 20 min",
       "cabinClass": "First Class",
@@ -96,9 +96,9 @@
       "airline": "Emirates",
       "from": "BKK",
       "to": "SFO",
-      "departDate": "2021-04-17",
+      "departDate": "2021-04-19",
       "departTime": "20:30",
-      "arrivedDate": "2021-04-18",
+      "arrivedDate": "2021-04-20",
       "arrivedTime": "04:45",
       "travelTime": "20 H 20 min",
       "cabinClass": "Economic",
@@ -110,9 +110,9 @@
       "airline": "Singapore Airlines",
       "from": "BKK",
       "to": "LHR",
-      "departDate": "2021-04-17",
+      "departDate": "2021-04-19",
       "departTime": "20:30",
-      "arrivedDate": "2021-04-18",
+      "arrivedDate": "2021-04-20",
       "arrivedTime": "04:45",
       "travelTime": "20 H 20 min",
       "cabinClass": "Economic",
@@ -189,18 +189,33 @@
       "name": "VEGETARIAN LACTO-OVO MEAL"
     }
   ],
-  "myflight": [{ "id": "1", "customer": "1756" }],
+  "myflight": [
+    {
+      "id": "1",
+      "customer": "1956"
+    }
+  ],
   "customers": [
     {
-      "id": "1756",
+      "id": "1956",
       "profilePic": "min.jpeg",
       "title": "Miss",
       "fname": "Samanta",
       "lname": "Robert",
       "address": "38/1 Moo16 Talat Jinda samphan Nakhonpathom Thailand",
-      "tel": "0917799692",
-      "dob": "2000-01-18",
+      "tel": "0919799692",
+      "dob": "2000-01-20",
       "meal": "VLML"
+    },
+    {
+      "id": "1756",
+      "title": "Mrs.",
+      "fname": "wave",
+      "lname": "moroc",
+      "address": "111",
+      "tel": "091",
+      "dob": "2021-04-15",
+      "meal": "{{meal.name}}"
     }
   ]
 }

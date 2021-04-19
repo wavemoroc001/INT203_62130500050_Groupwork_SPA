@@ -4,22 +4,30 @@
   >
     <nav-bar />
     <img
-      class="opacity-75 w-full h-full object-cover"
+      class=" w-full h-full object-cover filter brightness-50"
       src="../assets/bg/airplane-taking-off-from-airport.jpeg"
     />
-    <h3 class="text-5xl font-semibold text-black absolute top-64 left-96">
-      Let the journey begin
-    </h3>
-    <search-flight
-      class="absolute top-80 left-96"
-      @search-flight="filterFlights"
-    />
-    <!-- <search-flight class="absolute top-2/4 left-2/4 transform -translate-x-2/4 -translate-y-2/4" /> -->
-  </div>
-  <div
-    class="min-w-full h-screen flex flex-col relative justify-center items-center"
-  >
-    <display-flights :filterFlights="flights" />
+
+    <div class="absolute flex flex-col space-y-5">
+      <h3 class="text-5xl font-semibold text-white">
+        Let the journey begin
+      </h3>
+      <base-card>
+        <search-flight
+          @search-flight="filterFlights"
+          @is-search="popUpSearch"
+        />
+      </base-card>
+    </div>
+    <base-card
+      class="absolute flex fexl-col space-y-2 bg-white p-4 w-8/12 h-72 justify-items-center justify-center"
+      v-if="isSearch">
+      <button class="h-8 absolute right-3" @click="closePopUp">
+        <img class="h-8" src="../assets/icon/close.png" />
+      </button>
+
+      <display-flights :filtedFlights="filtedFlights" />
+    </base-card>
   </div>
 </template>
 <script>
@@ -33,6 +41,8 @@ export default {
   data() {
     return {
       flights: [],
+      filtedFlights: [],
+      isSearch: false,
     };
   },
   methods: {
@@ -43,10 +53,8 @@ export default {
     },
     async filterFlights(flightsCriteria) {
       this.flights = await this.fetchflights();
-      console.log(this.flights);
-      this.flights = this.flights.filter(function(flight) {
+      this.filtedFlights = this.flights.filter(function(flight) {
         if (
-          //  flight.ticketType == flightsCriteria.ticketType &&
           flight.from == flightsCriteria.from &&
           flight.to == flightsCriteria.to &&
           flight.departDate == flightsCriteria.departDate &&
@@ -55,8 +63,14 @@ export default {
           return true;
         return false;
       });
-      console.log(this.flights);
-      console.log(flightsCriteria);
+      console.log(this.filtedFlights);
+    },
+    popUpSearch(isSearch) {
+      this.isSearch = isSearch;
+    },
+    closePopUp() {
+      this.isSearch = false;
+      console.log(this.isSearch);
     },
   },
 };
