@@ -1,7 +1,9 @@
 <template>
   <div class="min-w-full h-screen">
     <nav-bar />
-    <div class="flex mt-11 grid-rows-none justify-items-center justify-center mx-36 gap-4">
+    <div
+      class="flex mt-11 grid-rows-none justify-items-center justify-center mx-36 gap-4"
+    >
       <div
         id="customerInfo"
         class=" shadow-lg  border-black rounded-lg p-4 space-y-1 flex flex-col justify-items-center justify-center relative"
@@ -75,12 +77,12 @@
 
 <script>
 import FlightDetail from "../components/FlightDetail.vue";
-import BaseCustomerForm from "../components/BaseCustomerForm.vue"
+import BaseCustomerForm from "../components/BaseCustomerForm.vue";
 export default {
-  components: { FlightDetail,BaseCustomerForm },
+  components: { FlightDetail, BaseCustomerForm },
   data() {
     return {
-      customer: '',
+      customer: "",
       flights: [],
       bookedFlight: [],
       isEdit: false,
@@ -97,7 +99,7 @@ export default {
       }
       return filted;
     },
-    closePopUp (){
+    closePopUp() {
       this.isEdit = false;
     },
     getImageProfile() {
@@ -137,8 +139,8 @@ export default {
       editRes.status === 200
         ? console.log("Customer Edited")
         : console.log("Failed to edit!");
-        this.isEdit = false;
-        this.$router.push({path:'/myflight'})
+      this.isEdit = false;
+      this.$router.push({ path: "/myflight" });
     },
   },
   async created() {

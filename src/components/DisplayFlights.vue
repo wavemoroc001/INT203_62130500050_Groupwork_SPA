@@ -23,12 +23,12 @@
         </div>
         <div>
           <h3 class="text-display-flights-head">Depart</h3>
-          <span>{{ flight.departDate }} </span>
+          <h3>{{ flight.departDate }} </h3>
           <span>{{ flight.departTime }}</span>
         </div>
         <div>
           <h3 class="text-display-flights-head">Arrived</h3>
-          <span>{{ flight.arrivedDate }} </span>
+          <h3>{{ flight.arrivedDate }} </h3>
           <span> {{ flight.arrivedTime }}</span>
         </div>
         <div>

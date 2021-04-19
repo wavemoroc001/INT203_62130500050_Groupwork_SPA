@@ -68,7 +68,7 @@
       "airline": "EVA Air",
       "from": "BKK",
       "to": "LHR",
-      "departDate": "2021-04-19",
+      "departDate": "2021-04-20",
       "departTime": "20:30",
       "arrivedDate": "2021-04-20",
       "arrivedTime": "04:45",
@@ -82,7 +82,7 @@
       "airline": "American Airlines",
       "from": "BKK",
       "to": "SFO",
-      "departDate": "2021-04-19",
+      "departDate": "2021-04-20",
       "departTime": "20:30",
       "arrivedDate": "2021-04-20",
       "arrivedTime": "04:45",
@@ -96,7 +96,7 @@
       "airline": "Emirates",
       "from": "BKK",
       "to": "SFO",
-      "departDate": "2021-04-19",
+      "departDate": "2021-04-20",
       "departTime": "20:30",
       "arrivedDate": "2021-04-20",
       "arrivedTime": "04:45",
@@ -110,13 +110,69 @@
       "airline": "Singapore Airlines",
       "from": "BKK",
       "to": "LHR",
-      "departDate": "2021-04-19",
+      "departDate": "2021-04-20",
       "departTime": "20:30",
       "arrivedDate": "2021-04-20",
       "arrivedTime": "04:45",
       "travelTime": "20 H 20 min",
       "cabinClass": "Economic",
       "price": "30000"
+    },
+    {
+      "id": "5",
+      "logo": "british_airways-logo.png",
+      "airline": "British Airways",
+      "from": "BKK",
+      "to": "LHR",
+      "departDate": "2021-04-20",
+      "departTime": "20:30",
+      "arrivedDate": "2021-04-20",
+      "arrivedTime": "04:45",
+      "travelTime": "25 H 10 min",
+      "cabinClass": "Economic",
+      "price": "28000"
+    },
+    {
+      "id": "6",
+      "logo": "thai-airway.png",
+      "airline": "Thai Airway",
+      "from": "BKK",
+      "to": "LHR",
+      "departDate": "2021-04-20",
+      "departTime": "20:30",
+      "arrivedDate": "2021-04-20",
+      "arrivedTime": "04:45",
+      "travelTime": "22 H 15 min",
+      "cabinClass": "Business Class",
+      "price": "35000"
+    },
+    {
+      "id": "7",
+      "logo": "Eva-air.png",
+      "airline": "Eva Air",
+      "from": "BKK",
+      "to": "LHR",
+      "departDate": "2021-04-20",
+      "departTime": "20:30",
+      "arrivedDate": "2021-04-20",
+      "arrivedTime": "04:45",
+      "travelTime": "20 H 35 min",
+      "cabinClass": "First Class",
+      "price": "42000"
+    },
+    {
+      "id": "8",
+      "logo": "Emirates.png",
+      "airline": "Emirates",
+      "from": "BKK",
+      "to": "LHR",
+      "departDate": "2021-04-20",
+      "departTime": "20:30",
+      "arrivedDate": "2021-04-20",
+      "arrivedTime": "04:45",
+      "travelTime": "22 H 15 min",
+      "cabinClass": "Economic",
+      "price": "32000"
     }
   ],
   "meals": [
@@ -191,34 +247,23 @@
   ],
   "myflight": [
     {
-      "id": "1",
-      "customer": "1956"
+      "id": "2",
+      "customer": "1756"
     },
     {
-      "id": "2",
+      "id": "4",
       "customer": "1756"
     }
   ],
   "customers": [
     {
-      "id": "1956",
-      "profilePic": "min.jpeg",
-      "title": "Miss",
-      "fname": "Samanta",
-      "lname": "Robert",
-      "address": "38/1 Moo16 Talat Jinda samphan Nakhonpathom Thailand",
-      "tel": "0919799692",
-      "dob": "2000-01-20",
-      "meal": "VLML"
-    },
-    {
       "id": "1756",
-      "title": "Mr.",
-      "fname": "wavemoroc",
-      "lname": "001",
-      "address": "09111",
+      "title": "Ms.",
+      "fname": "wave",
+      "lname": "moroc",
+      "address": "111",
       "tel": "091",
-      "dob": "2019-11-26",
+      "dob": "2021-04-15",
       "meal": "BLAND MEAL"
     }
   ]

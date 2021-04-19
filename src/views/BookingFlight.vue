@@ -20,9 +20,10 @@
       </base-card>
     </div>
     <base-card
-      class="absolute flex fexl-col space-y-2 bg-white p-4 w-8/12 h-72 justify-items-center justify-center"
+      class="absolute flex flex-col space-y-2 bg-white p-4 w-10/12 justify-items-center justify-center"
+      :class=" {'h-80' : filtedFlights.length < 2}"
       v-if="isSearch">
-      <button class="h-8 absolute right-3" @click="closePopUp">
+      <button class="h-8 absolute top-2 right-2" @click="closePopUp">
         <img class="h-8" src="../assets/icon/close.png" />
       </button>
 
@@ -70,7 +71,6 @@ export default {
     },
     closePopUp() {
       this.isSearch = false;
-      console.log(this.isSearch);
     },
   },
 };

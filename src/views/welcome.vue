@@ -14,17 +14,23 @@
         Welcome to Flight Scanner
       </h1>
       <h3 class="text-2xl text-white">Application for booking flight</h3>
-      <router-link class="mt-10" to="/booking-flight">
         <base-button
           :text-size="`text-xl`"
           :bgcolor="`bg-coolblue`"
           :text-color="`text-white`"
           :label="`Let's begin`"
+          @click="changePath"
         />
-      </router-link>
+
     </div>
   </div>
 </template>
 <script>
-export default {};
+export default {
+  methods: {
+    changePath(){
+      this.$router.push('/booking-flight');
+    }
+  }
+};
 </script>
