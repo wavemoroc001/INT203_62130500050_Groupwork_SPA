@@ -8,10 +8,10 @@
         id="flightInfo"
         class="col-span-1 grid gap-1 shadow-lg  border-black rounded-lg p-4 space-y-2"
       >
-        <!-- <img
-           :src="require(`../assets/AirlineLogo/${chooseFlight.logo}`)"
+        <img
+           :src="require(`@/assets/AirlineLogo/${chooseFlight.logo}`)"
           class="w-8/12 mt-3 place-self-center"
-        /> -->
+        /> 
         <h3 class="text-xl font-medium">Flight Infomation</h3>
         <div class="">
           <span>Flight Id : </span>
@@ -62,7 +62,7 @@ export default {
   methods: {
     getCustomerInfo(customer) {
       this.booking(customer,this.flightID);
-      this.$router.push
+      // this.$router.push({})
     },
     getImage(flight){
       return String(`../assets/AirlineLogo/${flight.logo}`).toString()

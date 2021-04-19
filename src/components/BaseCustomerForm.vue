@@ -105,9 +105,6 @@
     </button>
     </div>
 
-  
- 
-
   </form>
 </template>
 <script>
@@ -145,8 +142,25 @@ export default {
     },
   },
   async created() {
+    if(this.method.toLowerCase() =='POST'.toLowerCase()){
     const meal = await fetch(`http://localhost:5000/meals`);
     this.meals = await meal.json();
+    }
+    if(this.method.toLowerCase() == 'PUT'.toLowerCase()){
+      const customer = await fetch(`http://localhost:5000/customer/${this.customerIDProps}`)
+      this.customer =  await customer.json();
+    } 
   },
+  props : {
+    customerIDProps : {
+      type : Number
+    },
+    method : {
+      type : String,
+      require: true,
+      default: 'POST'
+    }
+  },watch: {}
+
 };
 </script>

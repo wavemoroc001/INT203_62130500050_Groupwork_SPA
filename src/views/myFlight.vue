@@ -6,9 +6,12 @@
     >
       <div
         id="customerInfo"
-        class="col-span-1 grid gap-1 shadow-lg  border-black rounded-lg p-4 space-y-1 static"
+        class=" shadow-lg  border-black rounded-lg p-4 space-y-1 flex flex-col justify-items-center justify-center relative"
       >
-        <img :src="getImageProfile()" class="w-8/12 mt-3 place-self-center" />
+        <button class="self-end" @click="editCustomer">
+          <img class="w-10" :src="require('../assets/icon/edit.png')" />
+        </button>
+        <img :src="getImageProfile()" class="w-8/12 mt-3 self-center" />
         <h3 class="text-xl font-medium">Customer Infomation</h3>
         <div class="mt-3">
           <span>Customer Id : </span>
@@ -57,6 +60,13 @@
         </div>
       </div>
     </div>
+    <base-card v-if="isEdit" class="absolute w-11/12 bg-black">
+      <base-customer-form
+        :customerIDProps="customer.id"
+        :method="PUT"
+        @customer-info="editCustomer"
+      />
+    </base-card>
   </div>
 </template>
 
@@ -69,6 +79,7 @@ export default {
       customer: [],
       flights: [],
       bookedFlight: [],
+      isEdit: false,
     };
   },
   methods: {
@@ -94,6 +105,29 @@ export default {
             (flight) => flight.id !== flightId
           ))
         : console.log(`Can not delete!`);
+    },
+    async editCustomer(customer) {
+      this.isEdit = true;
+      const editRes = await fetch(`http://localhost:5000/customers/1756`, {
+        method: "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: customer.id,
+          title: customer.title,
+          fname: customer.fname,
+          lname: customer.lname,
+          address: customer.address,
+          tel: customer.tel,
+          dob: customer.dob,
+          meal: customer.meal,
+        }),
+      });
+      editRes.status === 200
+        ? console.log("Customer Edited")
+        : console.log("Failed to edit!");
     },
   },
   async created() {
